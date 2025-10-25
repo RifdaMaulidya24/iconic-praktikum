@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker-compose build'
+                    bat 'docker-compose build'
                 }
             }
         }
@@ -19,16 +19,15 @@ pipeline {
         stage('Run App') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    bat 'docker-compose up -d'
                 }
             }
         }
 
         stage('Verify Running') {
             steps {
-                echo 'App is running on port 8100...'
+                echo '✅ App is running on port 8100...'
             }
         }
     }
 }
-
