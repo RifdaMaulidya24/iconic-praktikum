@@ -1,0 +1,26 @@
+services:
+  ionic-app:
+    build: .
+    container_name: ionic-container
+    ports:
+      - "8100:8100"
+    volumes:
+      - .:/app
+    command: ["ionic", "serve", "--external", "--no-open", "--host=0.0.0.0"]
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-server
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # agar Jenkins bisa kontrol Docker host
+      - .:/workspace  # agar Jenkins bisa akses project Ionic kamu
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
+
