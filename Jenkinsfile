@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/USERNAME/ionic-app.git'
+                git branch: 'main', url: 'https://github.com/RifdaMaulidya24/iconic-praktikum.git'
             }
         }
 
@@ -31,3 +31,4 @@ pipeline {
         }
     }
 }
+
